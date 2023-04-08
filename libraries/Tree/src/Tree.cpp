@@ -126,7 +126,7 @@ Splay::Node* Splay::find(int value) const noexcept {
 }
 
 bool Splay::contains(int value) const noexcept {
-    return (find(value) != nullptr);
+    return find(value);
 }
 
 Splay::Node* Splay::insert(Splay::Node*& node, Splay::Node*& prev_node, int value) {
@@ -234,5 +234,5 @@ Splay::Node::~Node() {
 }
 
 Splay::~Splay() {
-    // delete root;
+    delete root;
 }
