@@ -212,6 +212,9 @@ bool Splay::empty() const noexcept {
 }
 
 void Splay::dump_tree(Node* node, std::vector<int>& tree) const noexcept {
+    if (!node) {
+        return;
+    }
     if (node->left) {
         dump_tree(node->left, tree);
     }
@@ -234,5 +237,5 @@ Splay::Node::~Node() {
 }
 
 Splay::~Splay() {
-    delete root;
+    //delete root;
 }
