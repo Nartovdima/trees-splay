@@ -237,5 +237,5 @@ Splay::Node::~Node() {
 }
 
 Splay::~Splay() {
-    //delete root;
+    // delete root;
 }
