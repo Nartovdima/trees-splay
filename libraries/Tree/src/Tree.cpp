@@ -134,13 +134,12 @@ Splay::Node* Splay::insert(Splay::Node*& node, Splay::Node*& prev_node, int valu
         node = new Node(value, nullptr, nullptr, prev_node);
         return node;
     }
-    if (node->value == value) {
-        return nullptr;
-    }
     if (node->value < value) {
-        insert(node->right, node, value);
+        return insert(node->right, node, value);
+    } else if (node->value > value) {
+        return insert(node->left, node, value);
     } else {
-        insert(node->left, node, value);
+        return nullptr;
     }
 }
 
@@ -212,9 +211,6 @@ bool Splay::empty() const noexcept {
 }
 
 void Splay::dump_tree(Node* node, std::vector<int>& tree) const noexcept {
-    if (!node) {
-        return;
-    }
     if (node->left) {
         dump_tree(node->left, tree);
     }
@@ -237,5 +233,5 @@ Splay::Node::~Node() {
 }
 
 Splay::~Splay() {
-    // delete root;
+    delete root;
 }
